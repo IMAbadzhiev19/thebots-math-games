@@ -1,4 +1,4 @@
 ﻿  Sea Chess Github.cpp
-C:\Users\User\source\repos\Sea Chess Github\Sea Chess Github\Sea Chess Github.cpp(67,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\User\source\repos\Sea Chess Github\Sea Chess Github\Sea Chess Github.cpp(337): warning C4715: 'winnerChecks': not all control paths return a value
-  Sea Chess Github.vcxproj -> C:\Users\User\source\repos\Sea Chess Github\Debug\Sea Chess Github.exe
+C:\Users\User\source\repos\The-Bots\Sea Chess Github\Sea Chess Github.cpp(67,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\source\repos\The-Bots\Sea Chess Github\Sea Chess Github.cpp(337): warning C4715: 'winnerChecks': not all control paths return a value
+  Sea Chess Github.vcxproj -> C:\Users\User\source\repos\The-Bots\Debug\Sea Chess Github.exe
