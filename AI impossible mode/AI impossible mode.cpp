@@ -1,47 +1,205 @@
 #include <iostream>
 #include <string>
-using namespace std;
-void aiCheck(string gameBoard[3][3], string playerMove)
+#include <ctime>
+#include <cstdlib>
+
+void aiGameNew(string firstPlayer, string secondPlayer, int playerMove)
 {
-	//check rows
-	if (playerMove == "X")
+
+Try_again_player2:
+
+	srand(time(NULL));
+
+	playerMove = rand() % 9 + 1;
+
+	if (playerMove == 1)
 	{
-		for (int i = 0; i < 3; i++)
+		if (gamePlace[0][0] != firstPlayer && gamePlace[0][0] != secondPlayer)
 		{
-			for (int j = 0; j < 3; j++)
+			gamePlace[0][0] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 2)
+	{
+		if (gamePlace[0][1] != firstPlayer && gamePlace[0][1] != secondPlayer)
+		{
+			gamePlace[0][1] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 3)
+	{
+		if (gamePlace[0][2] != firstPlayer && gamePlace[0][2] != secondPlayer)
+		{
+			gamePlace[0][2] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 4)
+	{
+		if (gamePlace[1][0] != firstPlayer && gamePlace[1][0] != secondPlayer)
+		{
+			gamePlace[1][0] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 5)
+	{
+		if (gamePlace[1][1] != firstPlayer && gamePlace[1][1] != secondPlayer)
+		{
+			gamePlace[1][1] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 6)
+	{
+		if (gamePlace[1][2] != firstPlayer && gamePlace[1][2] != secondPlayer)
+		{
+			gamePlace[1][2] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 7)
+	{
+		if (gamePlace[2][0] != firstPlayer && gamePlace[2][0] != secondPlayer)
+		{
+			gamePlace[2][0] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 8)
+	{
+		if (gamePlace[2][1] != firstPlayer && gamePlace[2][1] != secondPlayer)
+		{
+			gamePlace[2][1] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+			goto Try_again_player2;
+		}
+	}
+
+	else if (playerMove == 9)
+	{
+		if (gamePlace[2][2] != firstPlayer && gamePlace[2][2] != secondPlayer)
+		{
+			gamePlace[2][2] = firstPlayer;
+			gameBoard(gamePlace);
+		}
+		else {
+
+			goto Try_again_player2;
+		}
+	}
+}
+
+void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
+{
+	gameTries++;
+	//check rows
+	if (firstPlayer == "X")
+	{
+		if (gamePlace[0][1] == firstPlayer && gamePlace[0][2] == firstPlayer)
+		{
+			if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 			{
-				if (gameBoard[i][j + 1] == "X" && gameBoard[i][j + 2] == "X")
-				{
-					gameBoard[i][j] = "O";
-				}
-				if (gameBoard[i][j] == "X" && gameBoard[i][j + 2] == "X")
-				{
-					gameBoard[i][j + 1] = "O";
-				}
-				if (gameBoard[i][j] == "X" && gameBoard[i][j + 1] == "X")
-				{
-					gameBoard[i][j + 2] = "O";
-				}
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][0] = secondPlayer;
+				gameBoard(gamePlace);
+			}
+		}
+		if (gamePlace[0][0] == firstPlayer && gamePlace[0][2] == firstPlayer)
+		{
+			if (gamePlace[0][1] == firstPlayer || gamePlace[0][1] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][1] = secondPlayer; gameBoard(gamePlace);
+			}
+		}
+		if (gamePlace[0][0] == firstPlayer && gamePlace[0][1] == firstPlayer)
+		{
+			if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][2] = secondPlayer; gameBoard(gamePlace);
 			}
 		}
 	}
-	else
+
+	else if (firstPlayer == "O")
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 3; j++)
+
+			if (gamePlace[i][1] == secondPlayer && gamePlace[i][2] == secondPlayer)
 			{
-				if (gameBoard[i][j + 1] == "O" && gameBoard[i][j + 2] == "O")
+				if (gamePlace[i][0] == firstPlayer || gamePlace[i][0] == secondPlayer)
 				{
-					gameBoard[i][j] = "X";
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
 				}
-				if (gameBoard[i][j] == "O" && gameBoard[i][j + 2] == "O")
+				else
 				{
-					gameBoard[i][j + 1] = "X";
+					gamePlace[i][0] = firstPlayer; gameBoard(gamePlace);
 				}
-				if (gameBoard[i][j] == "O" && gameBoard[i][j + 1] == "O")
+			}
+			if (gamePlace[i][0] == secondPlayer && gamePlace[i][2] == secondPlayer)
+			{
+				if (gamePlace[i][1] == firstPlayer || gamePlace[i][1] == secondPlayer)
 				{
-					gameBoard[i][j + 2] = "X";
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[i][1] = firstPlayer; gameBoard(gamePlace);
+				}
+			}
+			if (gamePlace[i][0] == secondPlayer && gamePlace[i][1] == secondPlayer)
+			{
+				if (gamePlace[i][2] == firstPlayer || gamePlace[i][2] == secondPlayer)
+				{
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[i][2] = firstPlayer; gameBoard(gamePlace);
 				}
 			}
 		}
@@ -49,112 +207,234 @@ void aiCheck(string gameBoard[3][3], string playerMove)
 
 
 	//check colums
-	if (playerMove == "X")
+	if (firstPlayer == "X")
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 3; j++)
-			{
-				if (gameBoard[i + 1][j] == "X" && gameBoard[i + 2][j] == "X")
-				{
-					gameBoard[i][j] = "O";
-				}
-				if (gameBoard[i][j] == "X" && gameBoard[i + 2][j] == "X")
-				{
-					gameBoard[i + 1][j] = "O";
-				}
-				if (gameBoard[i][j] == "X" && gameBoard[i + 1][j] == "X")
-				{
-					gameBoard[i + 2][j] = "O";
-				}
 
+			if (gamePlace[1][i] == firstPlayer && gamePlace[2][i] == firstPlayer)
+			{
+				if (gamePlace[0][i] == firstPlayer || gamePlace[0][i] == secondPlayer)
+				{
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[0][i] = secondPlayer; gameBoard(gamePlace);
+				}
 			}
+			if (gamePlace[0][i] == firstPlayer && gamePlace[2][i] == firstPlayer)
+			{
+				if (gamePlace[1][i] == firstPlayer || gamePlace[1][i] == secondPlayer)
+				{
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[1][i] = secondPlayer; gameBoard(gamePlace);
+				}
+			}
+			if (gamePlace[0][i] == firstPlayer && gamePlace[1][i] == firstPlayer)
+			{
+				if (gamePlace[2][i] == firstPlayer || gamePlace[2][i] == secondPlayer)
+				{
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[2][i] = secondPlayer; gameBoard(gamePlace);
+				}
+			}
+
 		}
 	}
-	else
+	else if (firstPlayer == "O")
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 3; j++)
+
+			if (gamePlace[1][i] == secondPlayer && gamePlace[2][i] == secondPlayer)
 			{
-				if (gameBoard[i + 1][j] == "O" && gameBoard[i + 2][j] == "O")
+				if (gamePlace[0][i] == firstPlayer || gamePlace[0][i] == secondPlayer)
 				{
-					gameBoard[i][j] = "X";
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
 				}
-				if (gameBoard[i][j] == "O" && gameBoard[i + 2][j] == "O")
+				else
 				{
-					gameBoard[i + 1][j] = "X";
+					gamePlace[0][i] = firstPlayer; gameBoard(gamePlace);
 				}
-				if (gameBoard[i][j] == "O" && gameBoard[i + 1][j] == "O")
+			}
+			if (gamePlace[0][i] == secondPlayer && gamePlace[2][i] == secondPlayer)
+			{
+				if (gamePlace[1][i] == firstPlayer || gamePlace[1][i] == secondPlayer)
 				{
-					gameBoard[i + 2][j] = "X";
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[1][i] = firstPlayer; gameBoard(gamePlace);
+				}
+			}
+			if (gamePlace[0][i] == secondPlayer && gamePlace[1][i] == secondPlayer)
+			{
+				if (gamePlace[2][i] == firstPlayer || gamePlace[2][i] == secondPlayer)
+				{
+					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+				}
+				else
+				{
+					gamePlace[2][i] = firstPlayer; gameBoard(gamePlace);
 				}
 			}
 		}
 	}
 
 	//check diagonals
-	if (playerMove == "X")
+	if (firstPlayer == "X")
 	{
 		//check from upper-left to lower-right
-		if (gameBoard[1][1] == "X" && gameBoard[2][2] == "X")
+		if (gamePlace[1][1] == firstPlayer && gamePlace[2][2] == firstPlayer)
 		{
-			gameBoard[0][0] = "O";
+			if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][0] = secondPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[0][0] == "X" && gameBoard[2][2] == "X")
+		if (gamePlace[0][0] == firstPlayer && gamePlace[2][2] == firstPlayer)
 		{
-			gameBoard[1][1] = "O";
+			if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[1][1] = secondPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[0][0] == "X" && gameBoard[1][1] == "X")
+		if (gamePlace[0][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 		{
-			gameBoard[2][2] = "O";
+			if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[2][2] = secondPlayer; gameBoard(gamePlace);
+			}
 		}
 
 
 		//check from upper-right to lower-left
-		if (gameBoard[2][0] == "X" && gameBoard[1][1] == "X")
+		if (gamePlace[2][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 		{
-			gameBoard[0][2] = "O";
+			if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][2] = secondPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[2][0] == "X" && gameBoard[0][2] == "X")
+		if (gamePlace[2][0] == firstPlayer && gamePlace[0][2] == firstPlayer)
 		{
-			gameBoard[1][1] = "O";
+			if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[1][1] = secondPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[0][2] == "X" && gameBoard[1][1] == "X")
+		if (gamePlace[0][2] == firstPlayer && gamePlace[1][1] == firstPlayer)
 		{
-			gameBoard[2][0] = "O";
+			if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[2][0] = secondPlayer; gameBoard(gamePlace);
+			}
 		}
 	}
 
-	else
+	else if (firstPlayer == "O")
 	{
 		//check from upper-left to lower-right
-		if (gameBoard[1][1] == "O" && gameBoard[2][2] == "O")
+		if (gamePlace[1][1] == secondPlayer && gamePlace[2][2] == secondPlayer)
 		{
-			gameBoard[0][0] = "X";
+			if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][0] = firstPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[0][0] == "O" && gameBoard[2][2] == "O")
+		if (gamePlace[0][0] == secondPlayer && gamePlace[2][2] == secondPlayer)
 		{
-			gameBoard[1][1] = "X";
+			if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[1][1] = firstPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[0][0] == "O" && gameBoard[1][1] == "O")
+		if (gamePlace[0][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
 		{
-			gameBoard[2][2] = "X";
+			if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[2][2] = firstPlayer; gameBoard(gamePlace);
+			}
 		}
 
 
 		//check from upper-right to lower-left
-		if (gameBoard[2][0] == "O" && gameBoard[1][1] == "O")
+		if (gamePlace[2][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
 		{
-			gameBoard[0][2] = "X";
+			if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[0][2] = firstPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[2][0] == "O" && gameBoard[0][2] == "O")
+		if (gamePlace[2][0] == secondPlayer && gamePlace[0][2] == secondPlayer)
 		{
-			gameBoard[1][1] = "X";
+			if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[1][1] = firstPlayer; gameBoard(gamePlace);
+			}
 		}
-		if (gameBoard[0][2] == "O" && gameBoard[1][1] == "O")
+		if (gamePlace[0][2] == secondPlayer && gamePlace[1][1] == secondPlayer)
 		{
-			gameBoard[2][0] = "X";
+			if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
+			{
+				aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			}
+			else
+			{
+				gamePlace[2][0] = firstPlayer; gameBoard(gamePlace);
+			}
 		}
 	}
 }
