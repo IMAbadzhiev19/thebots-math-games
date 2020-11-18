@@ -783,7 +783,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 		else if (firstPlayer == "O")
 		{
 			//check from upper-left to lower-right
-			if (gamePlace[1][1] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			if (gamePlace[1][1] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
@@ -792,12 +792,12 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[0][0] = firstPlayer; 
+					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
@@ -806,12 +806,12 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[1][1] = firstPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
@@ -820,7 +820,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[2][2] = firstPlayer; 
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
@@ -828,7 +828,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 
 
 			//check from upper-right to lower-left
-			else if (gamePlace[2][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[2][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
 				{
@@ -837,12 +837,12 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[0][2] = firstPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
 			}
-			else if (gamePlace[2][0] == secondPlayer && gamePlace[0][2] == secondPlayer)
+			else if (gamePlace[2][0] == firstPlayer && gamePlace[0][2] == firstPlayer)
 			{
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
@@ -851,12 +851,12 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[1][1] = firstPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
 			}
-			else if (gamePlace[0][2] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[0][2] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
 				{
@@ -865,7 +865,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[2][0] = firstPlayer; 
+					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
