@@ -26,6 +26,8 @@ int exitGame()
 
 void gameBoard(string somethingTest[3][3])
 {
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 7 | BACKGROUND_BLUE);
 	cout << ' ' << gamePlace[0][0] << " | " << gamePlace[0][1] << " | " << gamePlace[0][2] << endl;
 	cout << "---|---|---" << endl;
 	cout << ' ' << gamePlace[1][0] << " | " << gamePlace[1][1] << " | " << gamePlace[1][2] << endl;
@@ -37,6 +39,8 @@ void gameBoard(string somethingTest[3][3])
 
 void gameInput()
 {
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 10 | BACKGROUND_BLUE);
 	cout << "Player 1 --> Chose X or O : ";
 
 gameAgain:
@@ -45,6 +49,8 @@ gameAgain:
 
 	if (gamePlayer1 != "X" && gamePlayer1 != "O")
 	{
+		HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 		cout << endl;
 		cout << "Chose X or O ! : ";
 		goto gameAgain;
@@ -1075,10 +1081,15 @@ void ingameChecks(string firstPlayer, string secondPlayer, int playerMove, int p
 {
 	gameTries++;
 Try_again_player:
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 10 | BACKGROUND_BLUE);
 	cout << "Player " << playerNumber << " - Choose position from 1 - 9 : ";
 	cin >> playerMove;
 	if (playerMove != 1 && playerMove != 2 && playerMove != 3 && playerMove != 4 && playerMove != 5 && playerMove != 6 && playerMove != 7 && playerMove != 8 && playerMove != 9)
 	{
+		HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
+		cout << endl;
 		cout << "We told you, you automatically lost! Goodbye!" << endl;
 		exitGame();
 	}
@@ -1091,6 +1102,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1104,6 +1117,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1130,6 +1145,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1156,6 +1173,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1169,6 +1188,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1182,6 +1203,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1195,6 +1218,8 @@ Try_again_player:
 				gameBoard(gamePlace);
 			}
 			else {
+				HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 				cout << "Already taken! Try again!" << endl;
 				goto Try_again_player;
 			}
@@ -1206,7 +1231,8 @@ void winnerChecks(string gamePlayer, string gameWin)
 {
 	if ((gamePlace[0][0] == gamePlayer && gamePlace[1][0] == gamePlayer && gamePlace[2][0] == gamePlayer) || (gamePlace[0][1] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][1] == gamePlayer) || (gamePlace[0][2] == gamePlayer && gamePlace[1][2] == gamePlayer && gamePlace[2][2] == gamePlayer) || (gamePlace[0][0] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][2] == gamePlayer) || (gamePlace[0][2] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][0] == gamePlayer) || (gamePlace[0][0] == gamePlayer && gamePlace[0][1] == gamePlayer && gamePlace[0][2] == gamePlayer) || (gamePlace[1][0] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[1][2] == gamePlayer) || (gamePlace[2][0] == gamePlayer && gamePlace[2][1] == gamePlayer && gamePlace[2][2] == gamePlayer))
 	{
-
+		HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(h, 10 | BACKGROUND_BLUE);
 		cout << setw(60) << gameWin << endl << endl;;
 		cout << setw(62) << "CONGRATULATIONS !" << endl;
 
@@ -1217,6 +1243,8 @@ void winnerChecks(string gamePlayer, string gameWin)
 
 	else if (gameTries == 9)
 	{
+		HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 		cout << setw(59) << "TIE !" << endl << endl;
 		cout << setw(65) << "THERE IS NO WINNER !" << endl;
 
@@ -1286,6 +1314,8 @@ void gamePlayAi()
 
 void gamePlay()
 {
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 7 | BACKGROUND_BLUE);
 	cout << " __________     __      _______       __________      __          _______        __________    _________   _________" << endl;
 	cout << "|__________|   |  |    | ______|     |__________|    //\\\\        | ______|      |__________|  |  _____  | | ________|" << endl;
 	cout << "    |  |       |  |    | |               |  |       //  \\\\       | |                |  |      | |     | | | |" << endl;
@@ -1298,16 +1328,17 @@ void gamePlay()
 	cout << endl;
 	cout << endl;
 	cout << endl;
-
+	string modeChoice;
 	string firstGame = "1";
 	string secondGame = "2";
 	string thirdGame = "3";
 	string fourthGame = "4";
 
 	string playerChoice;
-	string modeChoice;
 
-	gameMenu:
+gameMenu:
+	HANDLE a = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(a, 8 | BACKGROUND_BLUE);
 	cout << endl;
 	cout << "Start (1)" << endl;
 	cout << "Rules (2)" << endl;
@@ -1319,6 +1350,8 @@ void gamePlay()
 	if (playerChoice == firstGame)
 	{
 	tryAgain:
+		HANDLE b = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(b, 8 | BACKGROUND_BLUE);
 		cout << endl;
 		cout << endl;
 		cout << "Vs Friend (1)" << endl;
@@ -1351,6 +1384,8 @@ void gamePlay()
 		}
 		else if (modeChoice != firstGame && modeChoice != secondGame && modeChoice != thirdGame && modeChoice != fourthGame)
 		{
+			HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+			SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
 			cout << endl;
 			cout << "Invalid input!" << endl;
 			goto tryAgain;
@@ -1374,5 +1409,6 @@ void gamePlay()
 
 int main()
 {
+	system("Color 10");
 	gamePlay();
 }
