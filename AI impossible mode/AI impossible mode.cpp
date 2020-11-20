@@ -124,8 +124,8 @@ Try_again_player2:
 
 void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 {
-	int selectedNumber = 0;
 	gameTries++;
+	int selectedNumber = 0;
 	if (gameTries > 2)
 	{
 		//check rows
@@ -137,13 +137,14 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
 					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
+					goto Bottom;
 				}
 			}
 			else if (gamePlace[0][0] == firstPlayer && gamePlace[0][2] == firstPlayer)
@@ -151,13 +152,14 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][1] == firstPlayer || gamePlace[0][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][1] = secondPlayer; 
+					gamePlace[0][1] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
+					goto Bottom;
 				}
 			}
 			else if (gamePlace[0][0] == firstPlayer && gamePlace[0][1] == firstPlayer)
@@ -165,13 +167,14 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][2] = secondPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
+					goto Bottom;
 				}
 			}
 
@@ -184,13 +187,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][0] == firstPlayer || gamePlace[1][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
 					gamePlace[1][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[1][0] == firstPlayer && gamePlace[1][2] == firstPlayer)
@@ -198,13 +201,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][1] = secondPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[1][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
@@ -212,13 +215,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][2] == firstPlayer || gamePlace[1][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][2] = secondPlayer; 
+					gamePlace[1][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
@@ -236,7 +239,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				{
 					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[2][0] == firstPlayer && gamePlace[2][2] == firstPlayer)
@@ -244,13 +247,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[2][1] == firstPlayer || gamePlace[2][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][1] = secondPlayer; 
+					gamePlace[2][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[2][0] == firstPlayer && gamePlace[2][1] == firstPlayer)
@@ -258,13 +261,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][2] = secondPlayer; 
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 		}
@@ -272,135 +275,135 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 		else if (firstPlayer == "O")
 		{
 			//chech first row
-			if (gamePlace[0][1] == secondPlayer && gamePlace[0][2] == secondPlayer)
+			if (gamePlace[0][1] == firstPlayer && gamePlace[0][2] == firstPlayer)
 			{
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][0] = firstPlayer; 
+					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[0][2] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[0][2] == firstPlayer)
 			{
 				if (gamePlace[0][1] == firstPlayer || gamePlace[0][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][1] = firstPlayer; 
+					gamePlace[0][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[0][1] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[0][1] == firstPlayer)
 			{
 				if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][2] = firstPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
 			//check second row
-			else if (gamePlace[1][1] == secondPlayer && gamePlace[1][2] == secondPlayer)
+			else if (gamePlace[1][1] == firstPlayer && gamePlace[1][2] == firstPlayer)
 			{
 				if (gamePlace[1][0] == firstPlayer || gamePlace[1][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][0] = firstPlayer; 
+					gamePlace[1][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[1][0] == secondPlayer && gamePlace[1][2] == secondPlayer)
+			else if (gamePlace[1][0] == firstPlayer && gamePlace[1][2] == firstPlayer)
 			{
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][1] = firstPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[1][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[1][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[1][2] == firstPlayer || gamePlace[1][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][2] = firstPlayer; 
+					gamePlace[1][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
 
 			//check third row
-			else if (gamePlace[2][1] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			else if (gamePlace[2][1] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][0] = firstPlayer; 
+					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[2][0] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			else if (gamePlace[2][0] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[2][1] == firstPlayer || gamePlace[2][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][1] = firstPlayer; 
+					gamePlace[2][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[2][0] == secondPlayer && gamePlace[2][1] == secondPlayer)
+			else if (gamePlace[2][0] == firstPlayer && gamePlace[2][1] == firstPlayer)
 			{
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][2] = firstPlayer; 
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 		}
@@ -416,13 +419,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][0] = secondPlayer; 
+					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][0] == firstPlayer && gamePlace[2][0] == firstPlayer)
@@ -430,13 +433,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][0] == firstPlayer || gamePlace[1][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][0] = secondPlayer; 
+					gamePlace[1][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][0] == firstPlayer && gamePlace[1][0] == firstPlayer)
@@ -444,13 +447,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][0] = secondPlayer; 
+					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
@@ -463,13 +466,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][1] == firstPlayer || gamePlace[0][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][1] = secondPlayer; 
+					gamePlace[0][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][1] == firstPlayer && gamePlace[2][1] == firstPlayer)
@@ -477,13 +480,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][1] = secondPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][1] == firstPlayer && gamePlace[1][1] == firstPlayer)
@@ -491,13 +494,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[2][1] == firstPlayer || gamePlace[2][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][1] = secondPlayer; 
+					gamePlace[2][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
@@ -510,13 +513,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][2] = secondPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][2] == firstPlayer && gamePlace[2][2] == firstPlayer)
@@ -524,13 +527,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][2] == firstPlayer || gamePlace[1][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][2] = secondPlayer; 
+					gamePlace[1][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][2] == firstPlayer && gamePlace[1][2] == firstPlayer)
@@ -538,104 +541,104 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][2] = secondPlayer; 
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 		}
 		else if (firstPlayer == "O")
 		{
 			//check first column
-			if (gamePlace[1][0] == secondPlayer && gamePlace[2][0] == secondPlayer)
+			if (gamePlace[1][0] == firstPlayer && gamePlace[2][0] == firstPlayer)
 			{
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][0] = firstPlayer; 
+					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[2][0] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[2][0] == firstPlayer)
 			{
 				if (gamePlace[1][0] == firstPlayer || gamePlace[1][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][0] = firstPlayer; 
+					gamePlace[1][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[1][0] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[1][0] == firstPlayer)
 			{
 				if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][0] = firstPlayer; 
+					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
 
 			//check second column
-			else if (gamePlace[1][1] == secondPlayer && gamePlace[2][1] == secondPlayer)
+			else if (gamePlace[1][1] == firstPlayer && gamePlace[2][1] == firstPlayer)
 			{
 				if (gamePlace[0][1] == firstPlayer || gamePlace[0][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][1] = firstPlayer; 
+					gamePlace[0][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][1] == secondPlayer && gamePlace[2][1] == secondPlayer)
+			else if (gamePlace[0][1] == firstPlayer && gamePlace[2][1] == firstPlayer)
 			{
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][1] = firstPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][1] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[0][1] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[2][1] == firstPlayer || gamePlace[2][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][1] = firstPlayer; 
+					gamePlace[2][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
@@ -643,46 +646,46 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 
 
 			//check third column
-			else if (gamePlace[1][2] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			else if (gamePlace[1][2] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][2] = firstPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][2] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			else if (gamePlace[0][2] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[1][2] == firstPlayer || gamePlace[1][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][2] = firstPlayer; 
+					gamePlace[1][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][2] == secondPlayer && gamePlace[1][2] == secondPlayer)
+			else if (gamePlace[0][2] == firstPlayer && gamePlace[1][2] == firstPlayer)
 			{
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][2] = firstPlayer;
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 		}
@@ -696,13 +699,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][0] = secondPlayer; 
+					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][0] == firstPlayer && gamePlace[2][2] == firstPlayer)
@@ -710,13 +713,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][1] = secondPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 			else if (gamePlace[0][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
@@ -724,13 +727,13 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][2] = secondPlayer; 
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
@@ -745,7 +748,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[0][2] = secondPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
@@ -759,7 +762,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[1][1] = secondPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
@@ -773,7 +776,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[2][0] = secondPlayer; 
+					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
@@ -783,52 +786,52 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 		else if (firstPlayer == "O")
 		{
 			//check from upper-left to lower-right
-			if (gamePlace[1][1] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			if (gamePlace[1][1] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[0][0] == firstPlayer || gamePlace[0][0] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[0][0] = firstPlayer; 
+					gamePlace[0][0] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[2][2] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[2][2] == firstPlayer)
 			{
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[1][1] = firstPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
-			else if (gamePlace[0][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[0][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[2][2] == firstPlayer || gamePlace[2][2] == secondPlayer)
 				{
 					aiGameNew(gamePlayer2, gamePlayer1, player2Move);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 				else
 				{
-					gamePlace[2][2] = firstPlayer; 
+					gamePlace[2][2] = secondPlayer;
 					gameBoard(gamePlace);
-					selectedNumber++;
+					selectedNumber++; goto Bottom;
 				}
 			}
 
 
 			//check from upper-right to lower-left
-			else if (gamePlace[2][0] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[2][0] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[0][2] == firstPlayer || gamePlace[0][2] == secondPlayer)
 				{
@@ -837,12 +840,12 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[0][2] = firstPlayer; 
+					gamePlace[0][2] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
 			}
-			else if (gamePlace[2][0] == secondPlayer && gamePlace[0][2] == secondPlayer)
+			else if (gamePlace[2][0] == firstPlayer && gamePlace[0][2] == firstPlayer)
 			{
 				if (gamePlace[1][1] == firstPlayer || gamePlace[1][1] == secondPlayer)
 				{
@@ -851,12 +854,12 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[1][1] = firstPlayer; 
+					gamePlace[1][1] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
 			}
-			else if (gamePlace[0][2] == secondPlayer && gamePlace[1][1] == secondPlayer)
+			else if (gamePlace[0][2] == firstPlayer && gamePlace[1][1] == firstPlayer)
 			{
 				if (gamePlace[2][0] == firstPlayer || gamePlace[2][0] == secondPlayer)
 				{
@@ -865,7 +868,7 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 				}
 				else
 				{
-					gamePlace[2][0] = firstPlayer; 
+					gamePlace[2][0] = secondPlayer;
 					gameBoard(gamePlace);
 					selectedNumber++;
 				}
@@ -874,11 +877,14 @@ void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 		if (selectedNumber == 0)
 		{
 			aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+			goto Bottom;
 		}
 	}
 	else
 	{
 		aiGameNew(gamePlayer2, gamePlayer1, player2Move);
+		goto Bottom;
 	}
+Bottom:
 	selectedNumber = 0;
 }
