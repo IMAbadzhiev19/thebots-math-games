@@ -18,6 +18,11 @@ int player1Move, player2Move, player1Number = 1, player2Number = 2, gameTries = 
 string gameWinner1 = "Player1 won !";
 string gameWinner2 = "Player2 won !";
 
+int exitGame()
+{
+	exit(13);
+	return 13;
+}
 
 void gameBoard(string somethingTest[3][3])
 {
@@ -1075,7 +1080,7 @@ Try_again_player:
 	if (playerMove != 1 && playerMove != 2 && playerMove != 3 && playerMove != 4 && playerMove != 5 && playerMove != 6 && playerMove != 7 && playerMove != 8 && playerMove != 9)
 	{
 		cout << "We told you, you automatically lost! Goodbye!" << endl;
-		exit(13);
+		exitGame();
 	}
 	else {
 		if (playerMove == 1)
@@ -1197,7 +1202,7 @@ Try_again_player:
 	}
 }
 
-int winnerChecks(string gamePlayer, string gameWin)
+void winnerChecks(string gamePlayer, string gameWin)
 {
 	if ((gamePlace[0][0] == gamePlayer && gamePlace[1][0] == gamePlayer && gamePlace[2][0] == gamePlayer) || (gamePlace[0][1] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][1] == gamePlayer) || (gamePlace[0][2] == gamePlayer && gamePlace[1][2] == gamePlayer && gamePlace[2][2] == gamePlayer) || (gamePlace[0][0] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][2] == gamePlayer) || (gamePlace[0][2] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][0] == gamePlayer) || (gamePlace[0][0] == gamePlayer && gamePlace[0][1] == gamePlayer && gamePlace[0][2] == gamePlayer) || (gamePlace[1][0] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[1][2] == gamePlayer) || (gamePlace[2][0] == gamePlayer && gamePlace[2][1] == gamePlayer && gamePlace[2][2] == gamePlayer))
 	{
@@ -1207,8 +1212,7 @@ int winnerChecks(string gamePlayer, string gameWin)
 
 		gameEnd = true;
 
-		exit(13);
-		return 13;
+		exitGame();
 	}
 
 	else if (gameTries == 9)
@@ -1216,8 +1220,7 @@ int winnerChecks(string gamePlayer, string gameWin)
 		cout << setw(59) << "TIE !" << endl << endl;
 		cout << setw(65) << "THERE IS NO WINNER !" << endl;
 
-		exit(13);
-		return 13;
+		exitGame();
 	}
 }
 
@@ -1283,40 +1286,89 @@ void gamePlayAi()
 
 void gamePlay()
 {
-	string firstGame = "One";
-	string secondGame = "Two";
-	string thirdGame = "Three";
+	cout << " __________     __      _______       __________      __          _______        __________    _________   _________" << endl;
+	cout << "|__________|   |  |    | ______|     |__________|    //\\\\        | ______|      |__________|  |  _____  | | ________|" << endl;
+	cout << "    |  |       |  |    | |               |  |       //  \\\\       | |                |  |      | |     | | | |" << endl;
+	cout << "    |  |       |  |    | |               |  |      //____\\\\      | |                |  |      | |     | | | |_______" << endl;
+	cout << "    |  |       |  |    | |               |  |     //______\\\\     | |                |  |      | |     | | |  _______|" << endl;
+	cout << "    |  |       |  |    | |               |  |    //        \\\\    | |                |  |      | |     | | | |" << endl;
+	cout << "    |  |       |  |    | |_____          |  |   //          \\\\   | |_____           |  |      | |_____| | | |________" << endl;
+	cout << "    |__|       |__|    |_______|         |__|  //            \\\\  |_______|          |__|      |_________| |_________|" << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << endl;
+
+	string firstGame = "1";
+	string secondGame = "2";
+	string thirdGame = "3";
+	string fourthGame = "4";
 
 	string playerChoice;
+	string modeChoice;
 
+	gameMenu:
 	cout << endl;
-	cout << "If you cin a differenct symbol except that from 1 to 9, you automatically lose the game!" << endl;
+	cout << "Start (1)" << endl;
+	cout << "Rules (2)" << endl;
+	cout << "Exit (3)" << endl;
 	cout << endl;
 
-	cout << "Choose : ";
-	cout << "If you want to play vs your friend - type One" << endl << endl << "         If you want to play vs the computer - type Two" << endl << endl << "         If you want to play vs the computer impossible - type Three" << endl << endl;
-
-tryAgain:
 	cout << "Enter your choice: ";
 	getline(cin, playerChoice);
-
 	if (playerChoice == firstGame)
 	{
-		gamePlay2Players();
+	tryAgain:
+		cout << endl;
+		cout << endl;
+		cout << "Vs Friend (1)" << endl;
+		cout << "Easy mode vs computer (2)" << endl;
+		cout << "Hard mode vs computer (3)" << endl;
+		cout << "Back to the menu (4)" << endl;
+
+		cout << endl;
+
+		cout << "Choose a mode: ";
+		getline(cin, modeChoice);
+
+		cout << endl;
+
+		if (modeChoice == firstGame)
+		{
+			gamePlay2Players();
+		}
+		else if (modeChoice == secondGame)
+		{
+			gamePlayAi();
+		}
+		else if (modeChoice == thirdGame)
+		{
+			gameImpossible();
+		}
+		else if (modeChoice == fourthGame)
+		{
+			goto gameMenu;
+		}
+		else if (modeChoice != firstGame && modeChoice != secondGame && modeChoice != thirdGame && modeChoice != fourthGame)
+		{
+			cout << endl;
+			cout << "Invalid input!" << endl;
+			goto tryAgain;
+		}
 	}
 	else if (playerChoice == secondGame)
 	{
-		gamePlayAi();
+		cout << "(1) The game is played on a grid that's 3 squares by 3 squares." << endl;
+		cout << "(2) You are X, your friend (or the computer in this case) is O. ..." << endl;
+		cout << "(3) The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner." << endl;
+		cout << "(4) When all 9 squares are full, the game is over." << endl;
+		cout << "(4) When you have to choose a gamePlace, If you enter a different symbol, the game automatically ends!" << endl;
+
+		goto gameMenu;
 	}
 	else if (playerChoice == thirdGame)
 	{
-		gameImpossible();
-	}
-	else if (playerChoice != firstGame || playerChoice != secondGame || playerChoice != thirdGame)
-	{
-		cout << endl;
-		cout << "Invalid input! You must choose One or Two or Three !!!" << endl;
-		goto tryAgain;
+		exitGame();
 	}
 }
 
