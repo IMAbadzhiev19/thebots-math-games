@@ -1,4 +1,0 @@
-﻿  ConsoleApplication4.cpp
-C:\Users\User\source\repos\ConsoleApplication4\ConsoleApplication4\ConsoleApplication4.cpp(75,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\User\source\repos\ConsoleApplication4\ConsoleApplication4\ConsoleApplication4.cpp(376): warning C4715: 'winnerChecks': not all control paths return a value
-  ConsoleApplication4.vcxproj -> C:\Users\User\source\repos\ConsoleApplication4\Debug\ConsoleApplication4.exe

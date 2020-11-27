@@ -1,4 +1,0 @@
-﻿  Sea Chess Github.cpp
-C:\Users\User\source\repos\The-Bots\Sea Chess Github\Sea Chess Github.cpp(74,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\User\source\repos\The-Bots\Sea Chess Github\Sea Chess Github.cpp(193,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Sea Chess Github.vcxproj -> C:\Users\User\source\repos\The-Bots\Debug\Sea Chess Github.exe
