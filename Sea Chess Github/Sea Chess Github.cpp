@@ -11,19 +11,16 @@ string gamePlace[3][3] = { "1" ,  "2" , "3", "4" , "5" , "6" , "7" , "8" , "9" }
 
 string gamePlayer1, gamePlayer2;
 
-bool gameEnd = false;
-
 int player1Move, player2Move, player1Number = 1, player2Number = 2, gameTries = 0;
 
-string gameWinner1 = "Player1 won !";
-string gameWinner2 = "Player2 won !";
-
+// Exit the function
 int exitGame()
 {
 	exit(13);
 	return 13;
 }
 
+// The gameBoard
 void gameBoard(string somethingTest[3][3])
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -37,6 +34,7 @@ void gameBoard(string somethingTest[3][3])
 	cout << endl;
 }
 
+// Player enter X or O
 void gameInput()
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -71,6 +69,7 @@ gameAgain:
 	cout << endl;
 }
 
+// Random generator for the AI easy mode
 void aiGame(string firstPlayer, string secondPlayer, int playerMove)
 {
 
@@ -191,6 +190,7 @@ Try_again_player2:
 	}
 }
 
+// Function about the Hard more. If the place is taken, it start a random generator
 void aiGameNew(string firstPlayer, string secondPlayer, int playerMove)
 {
 
@@ -310,6 +310,7 @@ Try_again_player2:
 	}
 }
 
+// Places the characters for hard mode.
 void aiCheckImpossible(string firstPlayer, string secondPlayer, int playerMove)
 {
 	gameTries++;
@@ -1830,6 +1831,7 @@ Bottom:
 	selectedNumber = 0;
 }
 
+// Function for 2 People mode that checks if the place is taken or free
 void ingameChecks(string firstPlayer, string secondPlayer, int playerMove, int playerNumber)
 {
 	gameTries++;
@@ -1980,6 +1982,7 @@ Try_again_player:
 	}
 }
 
+// checks for the winner
 void winnerChecks(string gamePlayer, string gameWin)
 {
 	if ((gamePlace[0][0] == gamePlayer && gamePlace[1][0] == gamePlayer && gamePlace[2][0] == gamePlayer) || (gamePlace[0][1] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][1] == gamePlayer) || (gamePlace[0][2] == gamePlayer && gamePlace[1][2] == gamePlayer && gamePlace[2][2] == gamePlayer) || (gamePlace[0][0] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][2] == gamePlayer) || (gamePlace[0][2] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[2][0] == gamePlayer) || (gamePlace[0][0] == gamePlayer && gamePlace[0][1] == gamePlayer && gamePlace[0][2] == gamePlayer) || (gamePlace[1][0] == gamePlayer && gamePlace[1][1] == gamePlayer && gamePlace[1][2] == gamePlayer) || (gamePlace[2][0] == gamePlayer && gamePlace[2][1] == gamePlayer && gamePlace[2][2] == gamePlayer))
@@ -1989,7 +1992,7 @@ void winnerChecks(string gamePlayer, string gameWin)
 		cout << setw(60) << gameWin << endl << endl;;
 		cout << setw(62) << "CONGRATULATIONS !" << endl;
 
-		gameEnd = true;
+		SetConsoleTextAttribute(h, 6 | BACKGROUND_BLUE);
 
 		exitGame();
 	}
@@ -1997,16 +2000,22 @@ void winnerChecks(string gamePlayer, string gameWin)
 	else if (gameTries == 9)
 	{
 		HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-		SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
+		SetConsoleTextAttribute(h, 10 | BACKGROUND_BLUE);
 		cout << setw(59) << "TIE !" << endl << endl;
 		cout << setw(65) << "THERE IS NO WINNER !" << endl;
+
+		SetConsoleTextAttribute(h, 6 | BACKGROUND_BLUE);
 
 		exitGame();
 	}
 }
 
+// Gameplay of the AI(hard)
 void gameImpossible()
 {
+	string gameWinner1 = "Player1 won !";
+	string gameWinner2 = "Player2 won !";
+	bool gameEnd = false;
 
 	gameInput();
 
@@ -2025,8 +2034,12 @@ void gameImpossible()
 	} while (gameEnd == false);
 }
 
+// Friend vs Frined gamePlay
 void gamePlay2Players()
 {
+	string gameWinner1 = "Player1 won !";
+	string gameWinner2 = "Player2 won !";
+	bool gameEnd = false;
 
 	gameInput();
 
@@ -2045,8 +2058,12 @@ void gamePlay2Players()
 	} while (gameEnd == false);
 }
 
+// Gameplay of the AI(easy)
 void gamePlayAi()
 {
+	string gameWinner1 = "Player1 won !";
+	string gameWinner2 = "Player2 won !";
+	bool gameEnd = false;
 
 	gameInput();
 
@@ -2065,6 +2082,7 @@ void gamePlayAi()
 	} while (gameEnd == false);
 }
 
+// The gameplay Of the game
 void gamePlay()
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -2081,13 +2099,9 @@ void gamePlay()
 	cout << endl;
 	cout << endl;
 	cout << endl;
-	string modeChoice;
-	string firstGame = "1";
-	string secondGame = "2";
-	string thirdGame = "3";
-	string fourthGame = "4";
 
-	string playerChoice;
+	int modeChoice;
+	int playerChoice;
 
 gameMenu:
 	HANDLE a = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -2099,8 +2113,8 @@ gameMenu:
 	cout << endl;
 
 	cout << "Enter your choice: ";
-	getline(cin, playerChoice);
-	if (playerChoice == firstGame)
+	cin >> playerChoice;
+	if (playerChoice == 1)
 	{
 	tryAgain:
 		HANDLE b = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -2115,52 +2129,53 @@ gameMenu:
 		cout << endl;
 
 		cout << "Choose a mode: ";
-		getline(cin, modeChoice);
+		cin >> modeChoice;
 
 		cout << endl;
 
-		if (modeChoice == firstGame)
+		if (modeChoice == 1)
 		{
 			gamePlay2Players();
 		}
-		else if (modeChoice == secondGame)
+		else if (modeChoice == 2)
 		{
 			gamePlayAi();
 		}
-		else if (modeChoice == thirdGame)
+		else if (modeChoice == 3)
 		{
 			gameImpossible();
 		}
-		else if (modeChoice == fourthGame)
+		else if (modeChoice == 4)
 		{
 			goto gameMenu;
 		}
-		else if (modeChoice != firstGame && modeChoice != secondGame && modeChoice != thirdGame && modeChoice != fourthGame)
+		else if (modeChoice != 1 && modeChoice != 2 && modeChoice != 3 && modeChoice != 4)
 		{
 			HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-			SetConsoleTextAttribute(h, 4 | BACKGROUND_BLUE);
+			SetConsoleTextAttribute(h, 0x0002 | BACKGROUND_BLUE);
 			cout << endl;
-			cout << "Invalid input!" << endl;
-			goto tryAgain;
+			cout << "Invalid input! Check the rules before you play!" << endl;
+			exit(0);
 		}
 	}
-	else if (playerChoice == secondGame)
+	else if (playerChoice == 2)
 	{
 		cout << "(1) The game is played on a grid that's 3 squares by 3 squares." << endl;
-		cout << "(2) You are X, your friend (or the computer in this case) is O. ..." << endl;
-		cout << "(3) The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner." << endl;
-		cout << "(4) When all 9 squares are full, the game is over." << endl;
-		cout << "(4) When you have to choose a gamePlace, If you enter a different symbol, the game automatically ends!" << endl;
+		cout << "(2) You are X, your friend or the computer is O . ..." << endl;
+		cout << "(3) The first player to get 3 of her marks in a up, down, across, or diagonally is the winner." << endl;
+		cout << "(4) When all 9 squares are full, the game is tie." << endl;
+		cout << "(4) When you have to choose a gamePlace or when you are in the menu, If you enter a different symbol, the game automatically ends!" << endl;
 
 		goto gameMenu;
 	}
-	else if (playerChoice == thirdGame)
+	else if (playerChoice == 3)
 	{
 		exitGame();
 	}
 }
 
 int main()
+
 {
 	system("Color 10");
 	gamePlay();
